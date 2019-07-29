@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { JottoState } from '../store/reducers';
+import { RootState } from '../store/types';
 
-const Congrats = (props: JottoState) => {
+const Congrats = (props: Partial<RootState>) => {
   if (!props.success) {
     return (
       <div data-test="component-congrats" />

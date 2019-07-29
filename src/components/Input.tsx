@@ -2,9 +2,9 @@ import React, { SyntheticEvent, RefObject } from 'react';
 import { connect } from 'react-redux';
 
 import { guessWord } from '../store/actions';
-import { JottoState } from '../store/reducers';
+import { RootState } from '../store/types';
 
-interface Props extends JottoState {
+interface Props extends Partial<RootState> {
   guessWord: (x: string) => void;
 };
 
@@ -61,7 +61,7 @@ export class UnconnectedInput extends React.Component<Props, {}> {
   }
 }
 
-const mapStateToProps = (state: JottoState) => {
+const mapStateToProps = (state: Partial<RootState>) => {
   return { success: state.success };
 };
 

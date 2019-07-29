@@ -5,9 +5,9 @@ import GuessedWords from './GuessedWords';
 import Congrats from './Congrats';
 import Input from './Input';
 import { getSecretWord } from '../store/actions';
-import { JottoState } from '../store/reducers';
+import { RootState } from '../store/types';
 
-interface Props extends JottoState {
+interface Props extends Partial<RootState> {
   getSecretWord: () => void;
 };
 
@@ -35,7 +35,7 @@ export class UnconnectedApp extends React.Component<Props, {}> {
   }
 }
 
-const mapStateToProps = (state: JottoState) => {
+const mapStateToProps = (state: RootState) => {
   const { success, guessedWords, secretWord } = state;
   return { success, guessedWords, secretWord };
 };

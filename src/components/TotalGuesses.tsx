@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { JottoState } from '../store/reducers';
+import { RootState } from '../store/types';
 
-const TotalGuesses = (props: JottoState) => {
+const TotalGuesses = (props: Partial<RootState>) => {
   return (
     <div>
       Total Guesses: {props.guessedWords? props.guessedWords.length : 0}

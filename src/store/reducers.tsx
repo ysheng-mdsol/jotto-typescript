@@ -1,18 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { actionTypes } from './actions';
-import { GuessedWord } from './models';
+import { RootState, ActionTypes } from './types';
 
-export type JottoState = {
-  readonly guessedWords?: GuessedWord[];
-  readonly secretWord?: string;
-  readonly success?: boolean;
-};
-
-export default combineReducers<JottoState>({
+export default combineReducers<Partial<RootState>>({
   guessedWords: (state = [], action) => {
     switch (action.type) {
-      case actionTypes.GUESS_WORD:
+      case ActionTypes.GUESS_WORD:
         return [...state, action.payload];
       default:
         return state;
@@ -20,7 +13,7 @@ export default combineReducers<JottoState>({
   },
   secretWord: (state = '', action) => {
     switch (action.type) {
-      case actionTypes.SET_SECRET_WORD:
+      case ActionTypes.SET_SECRET_WORD:
         return action.payload;
       default:
         return state;
@@ -28,7 +21,7 @@ export default combineReducers<JottoState>({
   },
   success: (state = false, action) => {
     switch (action.type) {
-      case actionTypes.CORRECT_GUESS:
+      case ActionTypes.CORRECT_GUESS:
         return true;
       default:
         return state;
