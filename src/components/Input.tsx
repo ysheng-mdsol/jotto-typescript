@@ -1,18 +1,20 @@
 import React, { SyntheticEvent, RefObject } from 'react';
+import { Store } from 'redux';
 import { connect } from 'react-redux';
 
 import { guessWord } from '../store/actions';
-import { RootState } from '../store/types';
+import { RootState, RootAction } from '../store/types';
 
 interface Props extends Partial<RootState> {
   guessWord: (x: string) => void;
+  store?: Store<Partial<RootState>, RootAction>;
 };
 
-export class UnconnectedInput extends React.Component<Props, {}> {
+export class UnconnectedInput extends React.Component<Props, RootState> {
   inputBox: RefObject<HTMLInputElement>;
 
   constructor(props: Props) {
-    super(props);    
+    super(props);
 
     this.inputBox = React.createRef<HTMLInputElement>();
   }
@@ -66,6 +68,6 @@ const mapStateToProps = (state: Partial<RootState>) => {
 };
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   { guessWord }
 )(UnconnectedInput);

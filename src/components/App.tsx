@@ -1,17 +1,19 @@
 import React from 'react';
+import { Store } from 'redux';
 import { connect } from 'react-redux';
 
 import GuessedWords from './GuessedWords';
 import Congrats from './Congrats';
 import Input from './Input';
 import { getSecretWord } from '../store/actions';
-import { RootState } from '../store/types';
+import { RootState, RootAction } from '../store/types';
 
 interface Props extends Partial<RootState> {
   getSecretWord: () => void;
+  store?: Store<Partial<RootState>, RootAction>;
 };
 
-export class UnconnectedApp extends React.Component<Props, {}> {
+export class UnconnectedApp extends React.Component<Props, RootState> {
 
   componentDidMount() {
     this.props.getSecretWord();
