@@ -16,7 +16,8 @@ export const guessWord = ( guessedWord: string): ThunkResult<void> => {
   
       if (guessedWord === secretWord) {
         dispatch({
-          type: ActionTypes.CORRECT_GUESS
+          type: ActionTypes.CORRECT_GUESS,
+          payload: undefined
         });
       }
     }

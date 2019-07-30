@@ -24,6 +24,7 @@ interface GuessedWordAction {
 
 interface CorrectGuessAction {
   readonly type: typeof ActionTypes.CORRECT_GUESS;
+  readonly payload: any;
 }
 
 interface SetSecretWordAction {

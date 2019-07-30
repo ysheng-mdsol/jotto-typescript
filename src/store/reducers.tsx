@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import { RootState, ActionTypes } from './types';
+import { RootState, ActionTypes, RootAction } from './types';
 
-export default combineReducers<Partial<RootState>>({
+export default combineReducers<Partial<RootState>, RootAction>({
   guessedWords: (state = [], action) => {
     switch (action.type) {
       case ActionTypes.GUESS_WORD:
